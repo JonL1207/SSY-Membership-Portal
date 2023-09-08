@@ -4,8 +4,8 @@
   "description": "Membership infrastructure for the Scottish Socialist Youth (SSY) party to allow it's members to register, log in, control their data and alter their membership subscription and donation details.",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
