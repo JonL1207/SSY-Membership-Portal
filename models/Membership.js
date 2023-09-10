@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 /**
-    Define the structure for saving a users induction status into the database
+    Defines the structure for saving a users induction status into the database
 
     @role               String      the role the user has within the system, e.g. member, admin, operator
     @type               String      the type of membership a user has, e.g. supporter, general, operator
@@ -10,36 +10,41 @@ const mongoose = require("mongoose");
     @isDiscretionary    Boolean     true if the user was given a membership by an admin and false if they created their membership theirself
 */
 
-const membership = new mongoose.Schema({
-  role: {
-    type: String,
-    uppercase: true,
-    trim: true,
-    enum: ["MEMBER", "ADMIN", "OPERATOR"],
-    default: "MEMBER",
+const membershipSchema = new mongoose.Schema(
+  {
+    role: {
+      type: String,
+      required: [true, "Please provide a role"],
+      uppercase: true,
+      trim: true,
+      enum: ["MEMBER", "ADMIN", "OPERATOR"],
+      default: "MEMBER",
+    },
+    type: {
+      type: String,
+      uppercase: true,
+      required: [true, "Please provide a membership type"],
+      trim: true,
+      enum: ["SUPPORTER", "GENERAL", "ORGANISER"],
+      default: "GENERAL",
+    },
+    stripeID: {
+      type: String,
+      default: "<STRIPE_CUSTOMER_ID",
+    },
+    isPaying: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    isDiscretionary: {
+      type: Boolean,
+      default: false,
+    },
   },
-  type: {
-    type: String,
-    uppercase: true,
-    trim: true,
-    enum: ["SUPPORTER", "GENERAL", "ORGANISER"],
-    default: "GENERAL",
-  },
-  stripeID: {
-    type: String,
-    default: "<STRIPE_CUSTOMER_ID",
-  },
-  isPaying: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  isDiscretionary: {
-    type: Boolean,
-    default: false,
-  },
-});
+  { _id: false }
+);
 
 module.exports = {
-  membership,
+  membershipSchema,
 };

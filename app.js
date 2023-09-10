@@ -20,10 +20,7 @@ const store = new MongoDBStore({
 
 //Database Connection
 mongoose.set("strictQuery", false);
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URI);
 
 //Middleware
 app.use(express.static("public"));
@@ -49,10 +46,12 @@ app.use(
 app.set("view engine", "ejs");
 
 //Routes
-app.get("/", (req, res) => res.render("auth/login"));
+app.get("/", (req, res) => {
+  res.render("auth/login");
+});
 // app.use("/auth", authRoutes);
 // app.use("/member", memberRoutes);
 // app.use("/admin", adminRoutes);
 // app.use("/payment", paymentRoutes);
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Connected to port ${PORT}`));

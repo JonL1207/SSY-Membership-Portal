@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 /**
-    Define the structure for saving a users additional details into the database
+    Defines the structure for saving a users additional details into the database
 
     @skills                 [String]    an array of skills belonging to the user
     @interests              [String]    an array of skills belonging to the user
@@ -11,27 +11,30 @@ const mongoose = require("mongoose");
     @findUs                 String      how the user found out about the organisation
 */
 
-const additionalDetails = new mongoose.Schema({
-  skills: {
-    type: [String],
+const additionalDetailsSchema = new mongoose.Schema(
+  {
+    skills: {
+      type: [String],
+    },
+    interests: {
+      type: [String],
+    },
+    accessibilityNeeds: {
+      type: [String],
+    },
+    isAttendingSecondary: {
+      type: Boolean,
+    },
+    isAttendingTernary: {
+      type: Boolean,
+    },
+    findUs: {
+      type: String,
+    },
   },
-  interests: {
-    type: [String],
-  },
-  accessibilityNeeds: {
-    type: [String],
-  },
-  isAttendingSecondary: {
-    type: Boolean,
-  },
-  isAttendingTernary: {
-    type: Boolean,
-  },
-  findUs: {
-    type: String,
-  },
-});
+  { _id: false }
+);
 
 module.exports = {
-  additionalDetails,
+  additionalDetailsSchema,
 };
