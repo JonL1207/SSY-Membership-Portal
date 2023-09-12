@@ -5,11 +5,15 @@ const {
   generateMembershipNumber,
 } = require("../utils/generateMembershipNumber");
 
-const { locationSchema } = require("./Location");
-const { additionalDetailsSchema } = require("./AdditionalDetails");
-const { externalMembershipsSchema } = require("./ExternalMemberships");
-const { membershipSchema } = require("./Membership");
-const { inductionSchema } = require("./Induction");
+const { locationSchema } = require("./userSubDocuments/Location");
+const {
+  additionalDetailsSchema,
+} = require("./userSubDocuments/AdditionalDetails");
+const {
+  externalMembershipsSchema,
+} = require("./userSubDocuments/ExternalMemberships");
+const { membershipSchema } = require("./userSubDocuments/Membership");
+const { inductionSchema } = require("./userSubDocuments/Induction");
 
 /**
     Defines the structure for saving a user into the database
@@ -47,15 +51,15 @@ const userSchema = new mongoose.Schema(
       required: [true, "Please provide surname"],
       trim: true,
     },
-    pronouns: {
-      type: String,
-      required: [true, "Please provide pronouns"],
-      uppercase: true,
-    },
-    dateOfBirth: {
-      type: Date,
-      required: [true, "Please provide date of birth"],
-    },
+    // pronouns: {
+    //   type: String,
+    //   required: [true, "Please provide pronouns"],
+    //   uppercase: true,
+    // },
+    // dateOfBirth: {
+    //   type: Date,
+    //   required: [true, "Please provide date of birth"],
+    // },
     email: {
       type: String,
       required: [true, "Please provide email"],
@@ -64,40 +68,40 @@ const userSchema = new mongoose.Schema(
       trim: true,
       validate: [isEmail, "Please enter a valid email address"],
     },
-    phone: {
-      type: String,
-      required: [true, "Please provide a phone number"],
-      trim: true,
-    },
+    // phone: {
+    //   type: String,
+    //   required: [true, "Please provide a phone number"],
+    //   trim: true,
+    // },
     password: {
       type: String,
-      requires: [true, "Please provide a password"],
+      requires: [true, "Please provide password"],
       minLength: [8, "Password must be at least 8 character in length"],
       validate: [
         isStrongPassword,
         "Please enter a valid passwsord:- minlength: 8, minLowercaseCharacters: 1, minUppercaseCharacters: 1, minNumbers: 1, minSymbols: 1",
       ],
     },
-    location: {
-      type: locationSchema,
-      required: true,
-    },
-    additionalDetails: {
-      type: additionalDetailsSchema,
-      required: true,
-    },
-    externalMemberships: {
-      type: externalMembershipsSchema,
-      required: true,
-    },
-    membership: {
-      type: membershipSchema,
-      required: true,
-    },
-    induction: {
-      type: inductionSchema,
-      required: true,
-    },
+    // location: {
+    //   type: locationSchema,
+    //   required: true,
+    // },
+    // additionalDetails: {
+    //   type: additionalDetailsSchema,
+    //   required: true,
+    // },
+    // externalMemberships: {
+    //   type: externalMembershipsSchema,
+    //   required: true,
+    // },
+    // membership: {
+    //   type: membershipSchema,
+    //   required: true,
+    // },
+    // induction: {
+    //   type: inductionSchema,
+    //   required: true,
+    // },
   },
   { optimisticConcurrency: true, timestamps: true, collection: "members" }
 );
@@ -107,14 +111,14 @@ const userSchema = new mongoose.Schema(
  */
 userSchema.pre("save", async function (next) {
   let memberNo = await generateMembershipNumber();
-  let existingMembershipNumber = await User.where().findMembershipNumber(
+  let existingMembershipNumber = await User.findOne().findMembershipNumber(
     memberNo
   );
 
-  //if membership number exists then generate a new one
-  while (existingMembershipNumber.length > 0) {
+  // if membership number exists then generate a new one
+  while (existingMembershipNumber) {
     memberNo = await generateMembershipNumber();
-    existingMembershipNumber = await User.where().findMembershipNumber(
+    existingMembershipNumber = await User.findOne().findMembershipNumber(
       memberNo
     );
   }
@@ -132,16 +136,256 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// ------- QUERY HELPERS -------
 /**
  * Query helper to find a membership number
  *
- * @param membershipNumber the membership number to search for
- * @returns array of membership numbers matching the search criteria
+ * @param {String} membershipNumber the membership number used for the search
+ * @returns {Object} membership numbers matching the search criteria
  */
 userSchema.query.findMembershipNumber = function (membershipNumber) {
   return this.where("membershipNumber")
     .equals(membershipNumber)
     .select({ membershipNumber: 1, _id: 0 });
+};
+
+/**
+ * Query helper to find a document by email
+ *
+ * @param {String} email the email used for the search
+ * @param {Boolean} pass true if you want the password in returned document and false if not
+ * @returns {Object} documents with email addresses matching the search criteria
+ */
+userSchema.query.findByEmail = function (email, pass) {
+  if (!pass) {
+    return this.where("email").equals(email).select({ password: 0 });
+  }
+
+  return this.where("email").equals(email);
+};
+
+/**
+ * Query helper to retrieve all documents
+ *
+ * @returns {Array} all documents without the password field
+ */
+userSchema.query.getAll = function () {
+  return this.where().select({ password: 0 });
+};
+
+// ------- MODEL STATICS -------
+/**
+ * Searches for a user with the provided email
+ *
+ * @param {String} email the email to search for
+ * @returns {Boolean} true if exist within db, false if not
+ */
+userSchema.statics.findRegistered = async function (email) {
+  const existing = await this.findOne().findByEmail(email, false);
+
+  if (existing) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+/**
+ * Checks if a user exists within database based on the email and password provided
+ *
+ * @param {String} email the email to search for
+ * @param {String} password the password to compare with existing user if one exists
+ * @returns {Object} the existing user that wishes to be logged in
+ */
+userSchema.statics.login = async function (email, password) {
+  if (!email) {
+    throw Error("Please provide an email", { cause: "email" });
+  }
+
+  if (!password) {
+    throw Error("Please provide a password", { cause: "password" });
+  }
+
+  var user = await this.findOne().findByEmail(email, true);
+
+  if (user) {
+    const authenticate = await bcrypt.compare(password, user.password);
+
+    if (authenticate) {
+      user = await this.findOne().findByEmail(email, false);
+      return user;
+    } else {
+      throw Error("The password you have provided is incorrect", {
+        cause: "password",
+      });
+    }
+  } else {
+    throw Error("The email provided has not been registered", {
+      cause: "email",
+    });
+  }
+};
+
+/**
+ * Finds a user and applies and update if that user exists
+ *
+ * @param {String} id the id of the user to be updated
+ * @param {Object} update the update to be applied
+ * @returns {Object} the updated user
+ */
+userSchema.statics.update = async function (id, update) {
+  if (!id) {
+    throw Error("Please provide the user ID", { cause: "userID" });
+  }
+
+  if (!update) {
+    throw Error("Please provide an update", { cause: "update" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw Error("Please provide a valid user id", { cause: "userID" });
+  }
+
+  var user = await this.findByIdAndUpdate(id, update, { new: true });
+
+  if (user) {
+    user = await this.findOne().findByEmail(user.email, false);
+    return user;
+  } else {
+    throw Error("The user being attempted to be updated does not exist", {
+      cause: "userID",
+    });
+  }
+};
+
+/**
+ * Finds a user and updates their password if they exist
+ *
+ * @param {String} id the id of the user to be updated
+ * @param {String} password the new password
+ * @returns {Object} the updated user
+ */
+userSchema.statics.updatePassword = async function (id, password) {
+  if (!id) {
+    throw Error("Please provide the user ID", { cause: "userID" });
+  }
+
+  if (!password) {
+    throw Error("Please provide a password", { cause: "password" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw Error("Please provide a valid user id", { cause: "userID" });
+  }
+
+  if (!isStrongPassword(password)) {
+    throw Error("Password provided is not strong enough", {
+      cause: "password",
+    });
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  password = await bcrypt.hash(password, salt);
+
+  var user = await this.findByIdAndUpdate(
+    id,
+    { password: password },
+    { new: true }
+  );
+
+  if (user) {
+    user = await this.findOne().findByEmail(user.email, false);
+    return user;
+  } else {
+    throw Error("The user being attempted to be updated does not exist", {
+      cause: "userID",
+    });
+  }
+};
+
+/**
+ * Find a user and delete that user if they exist
+ *
+ * @param {String} id the id of the user to be deleted
+ * @returns {Object} the deleted user
+ */
+userSchema.statics.delete = async function (id) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw Error("Please provide a valid user id");
+  }
+
+  const user = await this.findByIdAndDelete(id);
+
+  if (user) {
+    return user;
+  } else {
+    throw Error("The user being attempted to be deleted does not exist", {
+      cause: "userID",
+    });
+  }
+};
+
+/**
+ * Finds a user if they exist
+ *
+ * @param {String} id the id of the user to be found
+ * @returns {Object} the requested user
+ */
+userSchema.statics.getSingleUser = async function (id) {
+  if (!id) {
+    throw Error("Please provide the user ID", { cause: "userID" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw Error("Please provide a valid user id", { cause: "userID" });
+  }
+
+  var user = await this.findById(id);
+
+  if (user) {
+    user = await this.findOne().findByEmail(user.email, false);
+    return user;
+  } else {
+    throw Error("The user being attempted to be found does not exist", {
+      cause: "userID",
+    });
+  }
+};
+
+/**
+ * Retrieves all documents if there are any that exist
+ *
+ * @returns {Array} all documents within the database
+ */
+userSchema.statics.getAllUsers = async function () {
+  const users = await this.find().getAll();
+
+  if (users.length > 0) {
+    return users;
+  } else {
+    throw Error("There are currently no users");
+  }
+};
+
+// ------- DOCUMENT METHODS -------
+/**
+ * Register a new user to the database if that user does not already exist
+ *
+ * @returns {Object} message confirming user has been registered
+ */
+userSchema.methods.register = async function () {
+  const existingEmail = await User.findRegistered(this.email);
+
+  if (existingEmail) {
+    throw Error("The email provided is already registered", {
+      cause: "email",
+    });
+  } else {
+    await this.save();
+    return {
+      message: "User has been registerd successfully",
+    };
+  }
 };
 
 module.exports = User = mongoose.model("User", userSchema);

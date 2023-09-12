@@ -54,4 +54,28 @@ app.get("/", (req, res) => {
 // app.use("/admin", adminRoutes);
 // app.use("/payment", paymentRoutes);
 
-app.listen(PORT, () => console.log(`Connected to port ${PORT}`));
+app.listen(PORT);
+//, () => console.log(`Connected to port ${PORT}`)
+
+// ------------------------------------------------------------------------
+
+const User = require("./models/User");
+
+const user = new User({
+  firstName: "Jon",
+  surname: "Law",
+  email: "1@email.com",
+  password: "Password1#",
+});
+// user.save();
+//console.log(user)
+test();
+
+async function test() {
+  try {
+    let t = await User.getAllUsers();
+    console.log(t);
+  } catch (e) {
+    console.log(e.message);
+  }
+}
