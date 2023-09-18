@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 //Middleware
 app.use(express.static("public"));
-// app.use("/webooks", webhooks); //this line must be above express.json() usage as is uses raw data instead of json data
+// app.use("/webooks", webhooks); // this line must be above express.json() usage as is uses raw data instead of json data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
@@ -34,9 +34,9 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, //set to true in production
+      secure: false, // set to true in production
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, //cookie expires after 24 hours
+      maxAge: 1000 * 60 * 60 * 24, // cookie expires after 24 hours
     },
     store: store,
   })
@@ -49,33 +49,9 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.render("auth/login");
 });
-// app.use("/auth", authRoutes);
-// app.use("/member", memberRoutes);
-// app.use("/admin", adminRoutes);
-// app.use("/payment", paymentRoutes);
+app.use("/auth", authRoutes);
+app.use("/member", memberRoutes);
+app.use("/admin", adminRoutes);
+app.use("/payment", paymentRoutes);
 
-app.listen(PORT);
-//, () => console.log(`Connected to port ${PORT}`)
-
-// ------------------------------------------------------------------------
-
-const User = require("./models/User");
-
-const user = new User({
-  firstName: "Jon",
-  surname: "Law",
-  email: "1@email.com",
-  password: "Password1#",
-});
-// user.save();
-//console.log(user)
-test();
-
-async function test() {
-  try {
-    let t = await User.getAllUsers();
-    console.log(t);
-  } catch (e) {
-    console.log(e.message);
-  }
-}
+app.listen(PORT, () => console.log(`Connected to port ${PORT}`));

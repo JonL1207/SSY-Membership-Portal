@@ -51,15 +51,15 @@ const userSchema = new mongoose.Schema(
       required: [true, "Please provide surname"],
       trim: true,
     },
-    // pronouns: {
-    //   type: String,
-    //   required: [true, "Please provide pronouns"],
-    //   uppercase: true,
-    // },
-    // dateOfBirth: {
-    //   type: Date,
-    //   required: [true, "Please provide date of birth"],
-    // },
+    pronouns: {
+      type: String,
+      required: [true, "Please provide pronouns"],
+      uppercase: true,
+    },
+    dateOfBirth: {
+      type: Date,
+      required: [true, "Please provide date of birth"],
+    },
     email: {
       type: String,
       required: [true, "Please provide email"],
@@ -68,11 +68,11 @@ const userSchema = new mongoose.Schema(
       trim: true,
       validate: [isEmail, "Please enter a valid email address"],
     },
-    // phone: {
-    //   type: String,
-    //   required: [true, "Please provide a phone number"],
-    //   trim: true,
-    // },
+    phone: {
+      type: String,
+      required: [true, "Please provide a phone number"],
+      trim: true,
+    },
     password: {
       type: String,
       requires: [true, "Please provide password"],
@@ -82,26 +82,26 @@ const userSchema = new mongoose.Schema(
         "Please enter a valid passwsord:- minlength: 8, minLowercaseCharacters: 1, minUppercaseCharacters: 1, minNumbers: 1, minSymbols: 1",
       ],
     },
-    // location: {
-    //   type: locationSchema,
-    //   required: true,
-    // },
-    // additionalDetails: {
-    //   type: additionalDetailsSchema,
-    //   required: true,
-    // },
-    // externalMemberships: {
-    //   type: externalMembershipsSchema,
-    //   required: true,
-    // },
-    // membership: {
-    //   type: membershipSchema,
-    //   required: true,
-    // },
-    // induction: {
-    //   type: inductionSchema,
-    //   required: true,
-    // },
+    location: {
+      type: locationSchema,
+      required: true,
+    },
+    additionalDetails: {
+      type: additionalDetailsSchema,
+      required: true,
+    },
+    externalMemberships: {
+      type: externalMembershipsSchema,
+      required: true,
+    },
+    membership: {
+      type: membershipSchema,
+      required: true,
+    },
+    induction: {
+      type: inductionSchema,
+      required: true,
+    },
   },
   { optimisticConcurrency: true, timestamps: true, collection: "members" }
 );
@@ -136,12 +136,18 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-// ------- QUERY HELPERS -------
+/**
+ * When called returns the first name and surname concatenated into a full name
+ */
+userSchema.virtual("fullName").get(function () {
+  return `${this.firstName} ${this.surname}`;
+});
+
 /**
  * Query helper to find a membership number
  *
  * @param {String} membershipNumber the membership number used for the search
- * @returns {Object} membership numbers matching the search criteria
+ * @returns {Query} membership numbers matching the search criteria
  */
 userSchema.query.findMembershipNumber = function (membershipNumber) {
   return this.where("membershipNumber")
@@ -154,7 +160,7 @@ userSchema.query.findMembershipNumber = function (membershipNumber) {
  *
  * @param {String} email the email used for the search
  * @param {Boolean} pass true if you want the password in returned document and false if not
- * @returns {Object} documents with email addresses matching the search criteria
+ * @returns {Query} documents with email addresses matching the search criteria
  */
 userSchema.query.findByEmail = function (email, pass) {
   if (!pass) {
@@ -167,13 +173,12 @@ userSchema.query.findByEmail = function (email, pass) {
 /**
  * Query helper to retrieve all documents
  *
- * @returns {Array} all documents without the password field
+ * @returns {Query} all documents without the password field
  */
 userSchema.query.getAll = function () {
   return this.where().select({ password: 0 });
 };
 
-// ------- MODEL STATICS -------
 /**
  * Searches for a user with the provided email
  *
@@ -367,7 +372,6 @@ userSchema.statics.getAllUsers = async function () {
   }
 };
 
-// ------- DOCUMENT METHODS -------
 /**
  * Register a new user to the database if that user does not already exist
  *
