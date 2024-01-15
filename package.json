@@ -1,0 +1,19 @@
+{
+  "name": "ssy-membership-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonL1207/SSY-Membership-Portal.git"
+  },
+  "author": "Jon Law",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/JonL1207/SSY-Membership-Portal/issues"
+  },
+  "homepage": "https://github.com/JonL1207/SSY-Membership-Portal#readme"
+}
