@@ -1,0 +1,25 @@
+<%- include('../partials/header', {title: 'SSY Portal | Login'}); %> 
+
+<%-include('../partials/navbar') %>
+
+<div class="container">
+  <h1 class="ma-0">ssy members portal</h1>
+  <hr />
+  <div>
+    <img src="/imgs/ssy-icon-logo.png" alt="scottish socialist youth logo" />
+    <h2 class="ma-0">sign in</h2>
+  </div>
+  <div class="login-form">
+    <label class="ma-0" for="loginEmail">Email</label>
+    <input type="email" name="loginEmail" id="loginEmail" />
+    <label class="ma-0" for="loginPassword">Password</label>
+    <input type="password" name="loginPassword" id="loginPassword" />
+    <!-- <a class="fw-500" href="/auth/forgot-password">Forgot Password</a> -->
+  </div>
+  <div class="login-buttons">
+    <button class="info-btn" type="button">join us</button>
+    <button class="success-btn" type="button">enter</button>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
