@@ -4,8 +4,8 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const mongoose = require("mongoose");
 const helmet = require("helmet");
-// const authRoutes = require("./routes/authRoutes");
-// const memberRoutes = require("./routes/memberRoutes");
+const authRoutes = require("./routes/authRoutes");
+const memberRoutes = require("./routes/memberRoutes");
 // const adminRoutes = require("./routes/adminRoutes");
 // const paymentRoutes = require("./routes/paymentRoutes");
 // const webhookRoutes = require("./routes/webhookRoutes");
@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGO_URI);
 // Middleware
 app.use(helmet());
 app.use(express.static("public"));
-// app.use("/webooks", webhooks); // this line must be above express.json() usage as is uses raw data instead of json data
+// app.use("/webooks", webhooks); //this line must be above express.json() usage as is uses raw data instead of json data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -47,10 +47,10 @@ app.set("view engine", "ejs");
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("new home");
+  res.render("auth/login");
 });
-// app.use("/auth", authRoutes);
-// app.use("/member", memberRoutes);
+app.use("/auth", authRoutes);
+app.use("/member", memberRoutes);
 // app.use("/admin", adminRoutes);
 // app.use("/payment", paymentRoutes);
 
