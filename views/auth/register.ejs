@@ -1,0 +1,525 @@
+<%- include('../partials/header', {title: 'SSY Portal | Register'}); %> 
+
+<%-include('../partials/navbar') %>
+
+<div class="container">
+  <div class="tab">
+    <h1 class="ma-0">select your membership type</h1>
+    <div class="memberships">
+      <div class="option supporter">
+        <div>
+          <h1 class="ma-0">supporter</h1>
+          <img
+            src="/imgs/organiser-member-icon.png"
+            alt="scottish socialist youth supporter membership"
+          />
+          <p class="fw-500 ma-0">Description of supporter membership</p>
+        </div>
+        <div class="checkbox">
+          <i class="fa-solid fa-circle-check fa-2xl"></i>
+        </div>
+      </div>
+
+      <div class="option general">
+        <div>
+          <h1 class="ma-0">general</h1>
+          <img
+            src="/imgs/organiser-member-icon.png"
+            alt="scottish socialist youth general membership"
+          />
+          <p class="fw-500 ma-0">
+            General members strengthen the SSY by supporting us financially,
+            sharing our ideas to reach new people, and attending rallies, events
+            and protests. Each act, big or small, enriches our networkand
+            extends our reach.
+          </p>
+        </div>
+        <div class="checkbox checked">
+          <i class="fa-solid fa-circle-check fa-2xl"></i>
+        </div>
+      </div>
+
+      <div class="option organiser">
+        <div>
+          <h1 class="ma-0">organiser</h1>
+          <img
+            src="/imgs/organiser-member-icon.png"
+            alt="scottish socialist youth general membership"
+          />
+          <p class="fw-500 ma-0">
+            Organising members lead the charge by building the presence of the
+            socialist youth movement in communities across the country.
+            Organisers lead our efforts towards building a socialist country by
+            creating activist groups, forming community campaigns, and by
+            deciding the leadership and direction of the organisation.
+          </p>
+        </div>
+        <div class="checkbox">
+          <i class="fa-solid fa-circle-check fa-2xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="induction">
+      <p class="ma-0 fw-500">
+        An SSY membership officer will be in touch to set up an orientation and
+        induction meeting with you. Would you prefer to meet us in person or
+        over virtual meeting? (if virtual meeting, please provide a reason.)
+      </p>
+      <div class="induction-options">
+        <div class="induction-option">
+          <h2 class="ma-0">in person</h2>
+          <div class="checkbox checked">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+
+        <div class="induction-option">
+          <h2 class="ma-0">virtual</h2>
+          <div class="checkbox">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <div class="user-container">
+      <h1 class="ma-0">identity*</h1>
+      <hr class="ma-0" />
+      <div class="user-info">
+        <div>
+          <h2 class="ma-0">first name</h2>
+          <input
+            type="text"
+            name="registerFirstName"
+            id="registerFirstName"
+            required
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">last name</h2>
+          <input
+            type="text"
+            name="regiserLastName"
+            id="regiserLastName"
+            required
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">preferred pronouns</h2>
+          <input
+            type="text"
+            name="registerPronouns"
+            id="registerPronouns"
+            required
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">date of birth</h2>
+          <input type="date" name="registerDOB" id="registerDOB" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="user-container">
+      <h1 class="ma-0">contact details*</h1>
+      <hr class="ma-0" />
+      <div class="user-info">
+        <div>
+          <h2 class="ma-0">email</h2>
+          <input
+            type="email"
+            name="registerEmail"
+            id="registerEmail"
+            required
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">phone number</h2>
+          <input type="text" name="registerPhone" id="registerPhone" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="user-container">
+      <h1 class="ma-0">password*</h1>
+      <hr class="ma-0" />
+      <div class="user-info">
+        <div>
+          <h2 class="ma-0">password</h2>
+          <input
+            type="password"
+            name="registerPassword"
+            id="registerPassword"
+            required
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">confirm password</h2>
+          <input
+            type="password"
+            name="registerPasswordConfirm"
+            id="registerPasswordConfirm"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="user-container">
+      <h1 class="ma-0">where you're based*</h1>
+      <hr class="ma-0" />
+      <div class="user-info">
+        <div>
+          <h2 class="ma-0">city / town / neighbourhood</h2>
+          <input
+            type="text"
+            name="registerArea"
+            id="registerArea"
+            placeholder="e.g. Dalmeny, Stirling, Govanhill"
+            required
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">council area</h2>
+          <select name="registerCouncil" id="registerCouncil" required>
+            <option value="" disabled selected>Please Select...</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-container">
+      <h1 class="ma-0">tick any that apply</h1>
+      <hr class="ma-0" />
+      <div class="user-optional">
+        <div class="user-option">
+          <h2 class="ma-0">i am currently attending high school</h2>
+          <div class="checkbox checked">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+        <div class="user-option">
+          <h2 class="ma-0">i am a college / uni student</h2>
+          <div class="checkbox">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+        <div class="user-option">
+          <h2 class="ma-0">i am currently based outside scotland</h2>
+          <div class="checkbox">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-container">
+      <h1 class="ma-0">external memberships</h1>
+      <hr class="ma-0" />
+      <div class="user-optional">
+        <div class="user-option">
+          <h2 class="ma-0">
+            trade <br />
+            union
+          </h2>
+          <div class="checkbox checked">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+        <div class="user-option">
+          <h2 class="ma-0">
+            tenants' <br />
+            union
+          </h2>
+          <div class="checkbox">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+        <div class="user-option">
+          <h2 class="ma-0">
+            political <br />
+            party
+          </h2>
+          <div class="checkbox">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+        <div class="user-option">
+          <h2 class="ma-0">
+            campaining <br />
+            organisation
+          </h2>
+          <div class="checkbox">
+            <i class="fa-solid fa-circle-check fa-2xl"></i>
+          </div>
+        </div>
+      </div>
+      <div class="ext-memberships">
+        <div>
+          <h2 class="ma-0">which trade union are you a part of?</h2>
+          <input
+            type="text"
+            name="registerTradeUnion"
+            id="registerTradeUnion"
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">which tenants' union are you a part of?</h2>
+          <input
+            type="text"
+            name="registerTenantsUnion"
+            id="registerTenantsUnion"
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">which political party are you a part of?</h2>
+          <input
+            type="text"
+            name="registerPoliticalParty"
+            id="registerPoliticalParty"
+          />
+        </div>
+        <div>
+          <h2 class="ma-0">which campaining orgaisation are you a part of?</h2>
+          <input type="text" name="registerCampOrg" id="registerCampOrg" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <div class="user-container">
+      <h1 class="ma-0">your skills</h1>
+      <hr class="ma-0" />
+      <h2 class="ma-0">do you have any skills that could support the SSY?</h2>
+      <div class="skills">
+        <div class="skill selected">
+          <h3 class="ma-0">public speaking</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">FOREIGN LANGUAGE</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">GRASSROOTS CAMPAINING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">FIRST AID</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">NON-VIOLENT DIRECT ACTION</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">COMMUNITY ORGANISING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">TEACHING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">WEB DESIGN</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">TRADE UNION ORGANISING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">ELECTION CAMPAINING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">FUNDRASING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">EVENT PLANNING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">VOLUNTEER MANAGEMENT</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">PROJECT MANAGEMENT</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">TREASURER SKILLS</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">CONFLICT MANAGEMENT</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">EQUALITY, DIVERSITY AND INCLUSION</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">VIDEOGRAPHY</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">SOFTWARE DEVELOPMENT</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">DRIVING LICENCE</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">DRAWING/ILLISTRATION</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">GRAPHIC DESIGN</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">PHOTOGRAPHY</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">DIGITAL ACTIVISM</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">DIGITAL MARKETING</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">SOCIAL MEDIA MANAGEMENT</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">MEDIA/PRESS RELATIONS</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">LEGAL KNOWLEDGE</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">DATA ANALYSIS</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">POLICY RESEARCH</h3>
+        </div>
+      </div>
+      <div class="additional-skills">
+        <input
+          type="text"
+          name="addSkill"
+          id="addSkill"
+          placeholder="Add new skill..."
+        />
+        <button class="add-btn" type="button">add skill</button>
+      </div>
+    </div>
+
+    <div class="user-container">
+      <h1 class="ma-0">your interests</h1>
+      <hr class="ma-0" />
+      <h2 class="ma-0">
+        which activities would you most like to be involved in?
+      </h2>
+      <div class="skills">
+        <div class="skill">
+          <h3 class="ma-0">JOINING A GROUP IN MY LOCAL AREA</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">STARTING A GROUP IN MY LOCAL AREA</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">STARTING A NATIONAL CAMPAIGN</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">
+            ATTENDING PEER EDUCATION MEETINGS (E.G. BOOK CLUB, WORKSHOPS,
+            SEMINARS)
+          </h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">ORGANISING PEER EDUCATION MEETINGS</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">JOINING A NATIONAL CAMPAIGN GROUP</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">
+            ATTENDING SOLIDARITY ACTIONS WITH COMMUNITY GROUPS AND TRADE UNIONS
+          </h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">
+            ORGANISING SOLIDARITY EFFORTS WITH COMMUNITY CAMPAIGNS AND TRADE
+            UNIONS
+          </h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">HELPING TO COORDINATE A NATIONAL CAMPAIGN</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">WORKING WITH THE FUNDRASING GROUP</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">WRITING ARTICLES FOR THE WEBSITE</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">PRODUCING SOCIAL MEDIA POSTS WITH THE MEDIA TEAM</h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">
+            PRODUCING MEDIA CONTENT (E.G. PODCAST EPISODES, VIDEOS)
+          </h3>
+        </div>
+        <div class="skill">
+          <h3 class="ma-0">
+            DESIGNING GRAPHICS, ART, AND AGITATIONAL PROPOGANDA
+          </h3>
+        </div>
+      </div>
+      <div class="additional-skills">
+        <input
+          type="text"
+          name="addInterest"
+          id="addInterest"
+          placeholder="Add interest not listed..."
+        />
+        <button class="add-btn" type="button">add interest</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <div class="user-container">
+      <h1 class="ma-0">members' agreement</h1>
+      <hr class="ma-0" />
+      <div class="agreement-container">
+        <div class="agreement-section">
+          <h2 class="ma-0">
+            every ssy member must read and agree to the following
+            <a
+              href="https://www.scottishsocialistyouth.net/wp-content/uploads/2023/06/SSY-Members-Policy-2023.pdf"
+              target="_blank"
+            >
+              ssy members policy</a
+            >
+            AND OUR
+            <a
+              href="https://www.scottishsocialistyouth.net/our-ideas/#principles"
+              target="_blank"
+              >6 core principles.</a
+            >
+          </h2>
+          <div class="agreement-check">
+            <div class="checkbox checked">
+              <i class="fa-solid fa-circle-check fa-2xl"></i>
+            </div>
+            <h2 class="ma-0">i have read and agree to both</h2>
+          </div>
+        </div>
+        <div class="agreement-section">
+          <h2 class="ma-0">
+            to safeguard our members, we deny entry to anybody who serves under
+            his majesty's armed forces or to any police or prison authority.
+          </h2>
+          <div class="agreement-check">
+            <div class="checkbox checked">
+              <i class="fa-solid fa-circle-check fa-2xl"></i>
+            </div>
+            <h2 class="ma-0">i confirm i do not serve</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="register-buttons">
+    <button class="back-btn" type="button">back</button>
+    <button class="success-btn" type="button">next</button>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

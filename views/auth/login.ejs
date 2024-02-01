@@ -1,6 +1,6 @@
 <%- include('../partials/header', {title: 'SSY Portal | Login'}); %> 
 
-<%-include('../partials/navbar') %>
+<%- include('../partials/navbar') %>
 
 <div class="container">
   <h1 class="ma-0">ssy members portal</h1>
@@ -11,9 +11,9 @@
   </div>
   <div class="login-form">
     <label class="ma-0" for="loginEmail">Email</label>
-    <input type="email" name="loginEmail" id="loginEmail" />
+    <input type="email" name="loginEmail" id="loginEmail" required />
     <label class="ma-0" for="loginPassword">Password</label>
-    <input type="password" name="loginPassword" id="loginPassword" />
+    <input type="password" name="loginPassword" id="loginPassword" required />
     <!-- <a class="fw-500" href="/auth/forgot-password">Forgot Password</a> -->
   </div>
   <div class="login-buttons">
