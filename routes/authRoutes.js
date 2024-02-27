@@ -3,6 +3,18 @@ const authController = require("../controllers/authController");
 
 const router = Router();
 
+// If the user is already logged in, redirect to the member account page
+router.use((req, res, next) => {
+  if (req.url === "/logout") {
+    next();
+  } else {
+    if (req.session.user) {
+      res.redirect("/member/account");
+    }
+    next();
+  }
+});
+
 //---------- ROUTES THAT RENDER PAGES ----------
 
 /**

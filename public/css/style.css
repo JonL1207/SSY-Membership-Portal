@@ -123,15 +123,6 @@ select:focus {
   outline: solid var(--secondary) 0.2rem;
 }
 
-/* .password-icon-login {
-  position: relative;
-  top: -2.5rem;
-  left: 19rem;
-  width: 2rem;
-  color: var(--secondary);
-  margin-bottom: -1rem;
-} */
-
 button {
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -158,6 +149,21 @@ button {
   height: 3.5rem;
 }
 
+.error-alert {
+  border: 0.2rem solid var(--secondary);
+  margin: -2.5rem auto 2.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--secondary);
+  display: none;
+  align-items: center;
+}
+
+.error-alert svg {
+  font-size: 3rem;
+  color: var(--primary);
+  margin: 0 1.2rem 0 0;
+}
+
 nav {
   background-color: var(--primary);
   display: flex;
@@ -179,6 +185,7 @@ nav h1 {
   font-size: 3rem;
   letter-spacing: 0.2rem;
   cursor: pointer;
+  text-align: center;
 }
 
 footer {
@@ -223,7 +230,8 @@ footer img {
   font-size: 2rem;
 }
 
-.login-form {
+.login-form,
+form {
   display: flex;
   flex-direction: column;
   text-align: start;

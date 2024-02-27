@@ -48,9 +48,9 @@ app.set("view engine", "ejs");
 // Routes
 app.get("/", (req, res) => {
   if (req.session.user) {
-    res.render("member/account");
+    res.redirect("/member/account");
   }
-  res.render("auth/login");
+  res.redirect("/auth/login");
 });
 app.use("/auth", authRoutes);
 app.use("/member", memberRoutes);

@@ -1,17 +1,17 @@
 const handleErrors = (res, err) => {
-  let errors = {};
+  let errors = { success: false, error: true, message: '' };
 
   if (err.code === 11000) {
-    errors.dataDublication = err.message;
+    errors.message = err.message;
   } else if (err.message.includes("User validation failed")) {
     Object.values(err.errors).forEach((properties) => {
-      errors[properties.path] = properties.message;
+      errors.message = properties.message;
     });
   } else {
-    errors[err.cause] = err.message;
+    errors.message = err.message;
   }
 
-  res.json({ errors: errors });
+  res.json(errors);
 };
 
 module.exports = {

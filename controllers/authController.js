@@ -22,9 +22,9 @@ const register_POST = async (req, res) => {
     var user = new User(req.body);
     await user.register();
 
-    // Set the session
-    req.session.isAuthenticated = true;
-    req.session.user = user;
+    // // Set the session
+    // req.session.isAuthenticated = true;
+    // req.session.user = user;
 
     // Redirect to home(will be updated to select membership in future)
     res.redirect("/member/account");
@@ -44,7 +44,12 @@ const login_POST = async (req, res) => {
     req.session.isAuthenticated = true;
     req.session.user = user;
 
-    res.redirect('/member/account')
+    // Respond with json for redirect
+    res.status(200).json({
+      success: true,
+      redirect: true,
+      url: "/member/account",
+    });
   } catch (err) {
     handleErrors(res, err);
   }
@@ -53,8 +58,15 @@ const login_POST = async (req, res) => {
 const logout_POST = (req, res) => {
   // Delete session and redirect back to login
   req.session.destroy((err) => {
-    if (err) throw err;
-    res.redirect("/auth/login");
+    if (err) {
+      handleErrors(res, err);
+    }
+
+    res.status(200).json({
+      success: true,
+      redirect: true,
+      url: "/auth/login",
+    });
   });
 };
 
