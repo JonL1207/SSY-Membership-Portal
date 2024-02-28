@@ -4,6 +4,7 @@ const { isEmail, isStrongPassword } = require("validator");
 const {
   generateMembershipNumber,
 } = require("../utils/generateMembershipNumber");
+const { isValidDOB } = require("../utils/validateDOB");
 const { locationSchema } = require("./userSubDocuments/Location");
 const {
   additionalDetailsSchema,
@@ -58,6 +59,7 @@ const userSchema = new mongoose.Schema(
     dateOfBirth: {
       type: Date,
       required: [true, "Please provide date of birth"],
+      validate: [isValidDOB, "Must be between age 14 and 30"],
     },
     phone: {
       type: String,

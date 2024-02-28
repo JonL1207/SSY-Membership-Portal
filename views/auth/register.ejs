@@ -1,6 +1,11 @@
 <%- include('../partials/header', {title: 'SSY Portal | Register', script: '/js/registerScript.js'}) %> 
 
-<%-include('../partials/navbar') %>
+<%- include('../partials/navbar') %>
+
+<div id="error-alert" class="error-alert">
+  <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+  <h2 id="error-alert-message" class="ma-0"></h2>
+</div>
 
 <div class="container">
   <div class="tab">
@@ -517,8 +522,8 @@
   </div>
 
   <div class="register-buttons">
-    <button class="back-btn" type="button">back</button>
-    <button class="success-btn" type="button">next</button>
+    <button id="backBtn" class="back-btn" type="button">back</button>
+    <button id="nextBtn" class="success-btn" type="button">next</button>
   </div>
 </div>
 

@@ -56,6 +56,9 @@ app.use("/auth", authRoutes);
 app.use("/member", memberRoutes);
 // app.use("/admin", adminRoutes);
 // app.use("/payment", paymentRoutes);
+app.get("*", (req, res) => {
+  res.redirect('/auth/login')
+});
 
 // Start Server
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
