@@ -151,17 +151,64 @@ button {
 
 .error-alert {
   border: 0.2rem solid var(--secondary);
-  margin: -2.5rem auto 2.5rem;
+  margin: -1rem auto 1rem;
   padding: 0.5rem 1rem;
   color: var(--secondary);
   display: none;
   align-items: center;
+  max-width: 80rem;
 }
 
 .error-alert svg {
   font-size: 3rem;
   color: var(--primary);
   margin: 0 1.2rem 0 0;
+}
+
+.progress-bar {
+  margin-bottom: 2.5rem;
+}
+
+.progress-bar div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.progress-bar h1 {
+  color: var(--secondary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: -2.5rem;
+}
+
+.circle {
+  color: var(--secondary);
+  width: 4rem;
+  height: 4rem;
+  border-style: solid;
+  border-color: var(--secondary);
+  border-radius: 50%;
+  border-width: 0.1rem;
+  font-weight: 900;
+}
+
+.rectangle {
+  width: 8rem;
+  height: 0.1rem;
+  background-color: var(--secondary);
+}
+
+.active {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.completed {
+  background-color: var(--green);
+  color: var(--background);
 }
 
 nav {
@@ -296,7 +343,6 @@ form {
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
-  cursor: pointer;
 }
 
 .option img {
@@ -307,6 +353,7 @@ form {
 .induction {
   margin: 2rem 0;
   text-align: start;
+  display: none;
 }
 
 .induction-options {
@@ -363,6 +410,14 @@ form {
   width: 100%;
 }
 
+.password-information {
+  font-weight: 500;
+}
+
+.password-information li {
+  margin: 0.5rem 0 0.5rem 2.5rem;
+}
+
 .user-optional {
   display: flex;
   justify-content: space-evenly;
@@ -384,9 +439,11 @@ form {
 
 .ext-memberships div {
   padding: 1rem 1rem 0;
+  display: none;
 }
 
-.skills {
+.skills,
+.interests {
   background-color: var(--background);
   color: var(--secondary);
   padding: 1rem;
@@ -397,7 +454,8 @@ form {
   width: 100%;
 }
 
-.skill {
+.skill,
+.interest {
   border: medium solid var(--secondary);
   padding: 0.5rem;
   cursor: pointer;

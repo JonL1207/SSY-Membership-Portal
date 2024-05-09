@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { inductionSchema } = require("./Induction");
 
 /**
     Defines the structure for saving a users induction status into the database
@@ -29,8 +30,7 @@ const membershipSchema = new mongoose.Schema(
       default: "GENERAL",
     },
     stripeID: {
-      type: String,
-      unique: true
+      type: String
     },
     isPaying: {
       type: Boolean,
@@ -40,6 +40,10 @@ const membershipSchema = new mongoose.Schema(
     isDiscretionary: {
       type: Boolean,
       default: false,
+    },
+    induction: {
+      type: inductionSchema,
+      required: true,
     },
   },
   { _id: false }

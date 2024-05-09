@@ -10,23 +10,25 @@ const mongoose = require("mongoose");
 */
 
 const additionalDetailsSchema = new mongoose.Schema(
-  {
-    skills: {
-      type: [String],
+    {
+        skills: {
+            type: [String],
+            default: undefined,
+        },
+        interests: {
+            type: [String],
+            default: undefined,
+        },
+        isAttendingSecondary: {
+            type: Boolean,
+        },
+        isAttendingTernary: {
+            type: Boolean,
+        },
     },
-    interests: {
-      type: [String],
-    },
-    isAttendingSecondary: {
-      type: Boolean,
-    },
-    isAttendingTernary: {
-      type: Boolean,
-    },
-  },
-  { _id: false }
+    { _id: false }
 );
 
 module.exports = {
-  additionalDetailsSchema,
+    additionalDetailsSchema,
 };

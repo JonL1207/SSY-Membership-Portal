@@ -20,6 +20,7 @@ const locationSchema = new mongoose.Schema(
     },
     isBasedInScotland: {
       type: Boolean,
+      default: true
     },
   },
   { _id: false }

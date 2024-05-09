@@ -13,7 +13,6 @@ const {
   externalMembershipsSchema,
 } = require("./userSubDocuments/ExternalMemberships");
 const { membershipSchema } = require("./userSubDocuments/Membership");
-const { inductionSchema } = require("./userSubDocuments/Induction");
 
 /**
     Defines the structure for saving a user into the database
@@ -84,23 +83,16 @@ const userSchema = new mongoose.Schema(
       ],
     },
     location: {
-      type: locationSchema,
-      required: true,
+      type: locationSchema
     },
     additionalDetails: {
-      type: additionalDetailsSchema,
-      required: true,
+      type: additionalDetailsSchema
     },
     externalMemberships: {
-      type: externalMembershipsSchema,
-      required: true,
+      type: externalMembershipsSchema
     },
     membership: {
       type: membershipSchema,
-      required: true,
-    },
-    induction: {
-      type: inductionSchema,
       required: true,
     },
   },
@@ -205,7 +197,7 @@ userSchema.statics.findRegistered = async function (email) {
 /**
  * Register a new user to the database if that user does not already exist
  *
- * @returns {Onject} message confirming user has been regitered
+ * @returns {Object} message confirming user has been regitered
  */
 userSchema.methods.register = async function () {
   const existingEmail = await User.findRegistered(this.email);

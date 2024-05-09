@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
     @isAwaiting     Boolean     true if the user is waiting to be made an organiser and false if not
     @status         String      the status of the induction
-    @method    String      how the user wishes to undertake their induction
+    @method         String      how the user wishes to undertake their induction
 */
 
 const inductionSchema = new mongoose.Schema(
@@ -25,7 +25,7 @@ const inductionSchema = new mongoose.Schema(
       type: String,
       trim: true,
       uppercase: true,
-      enum: ["IN PERSON", "VIRTUAL"],
+      enum: ["PHYSICAL", "VIRTUAL"],
     },
   },
   { _id: false }

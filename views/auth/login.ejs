@@ -1,32 +1,31 @@
 <%- include('../partials/header', {title: 'SSY Portal | Login', script: '/js/loginScript.js'}) %> 
-
 <%- include('../partials/navbar') %>
 
 <div id="error-alert" class="error-alert">
-  <i class="fa-solid fa-circle-xmark fa-2xl"></i>
-  <h2 id="error-alert-message" class="ma-0"></h2>
+    <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+    <h2 id="error-alert-message" class="ma-0"></h2>
 </div>
 
 <div class="container">
-  <h1 class="ma-0">ssy members portal</h1>
-  <hr />
-  <div>
-    <img src="/imgs/ssy-icon-logo.png" alt="scottish socialist youth logo" />
-    <h2 class="ma-0">sign in</h2>
-  </div>
-  <div class="login-form">
-    <form id="loginForm" action="/auth/login">
-      <label class="ma-0" for="loginEmail">Email</label>
-      <input type="email" name="email" id="loginEmail" required autocomplete="email" />
-      <label class="ma-0" for="loginPassword">Password</label>
-      <input type="password" name="password" id="loginPassword" required />
-      <!-- <a class="fw-500" href="/auth/forgot-password">Forgot Password</a> -->
-    </form>
-  </div>
-  <div class="login-buttons">
-    <button id="joinBtn" class="info-btn" type="button">join us</button>
-    <button id="submitBtn" form="loginForm" class="success-btn" type="submit">enter</button>
-  </div>
+    <h1 class="ma-0">ssy members portal</h1>
+    <hr />
+    <div>
+        <img src="/imgs/ssy-icon-logo.png" alt="scottish socialist youth logo" />
+        <h2 class="ma-0">sign in</h2>
+    </div>
+    <div class="login-form">
+        <form id="loginForm" action="/auth/login">
+            <label class="ma-0" for="loginEmail">Email</label>
+            <input type="email" name="email" id="loginEmail" required autocomplete="email" />
+            <label class="ma-0" for="loginPassword">Password</label>
+            <input type="password" name="password" id="loginPassword" required />
+            <!-- <a class="fw-500" href="/auth/forgot-password">Forgot Password</a> -->
+        </form>
+    </div>
+    <div class="login-buttons">
+        <button id="joinBtn" class="info-btn" type="button">join us</button>
+        <button id="submitBtn" form="loginForm" class="success-btn" type="submit">enter</button>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
