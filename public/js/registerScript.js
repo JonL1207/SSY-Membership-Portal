@@ -70,7 +70,7 @@ const INTERESTS = [
     "Joining a group in my local area",
     "Starting a group in my local area",
     "Starting a national campaign",
-    "Attending peer education meetings (e.g. book club, workshops, semiars",
+    "Attending peer education meetings (e.g. book club, workshops, semiars)",
     "Organising peer education meetings",
     "Joining a national campaign group",
     "Attending solidarity actions with community groups and trade unions",
@@ -102,6 +102,11 @@ var user = {
 };
 
 // Gather DOM elements
+const logoutSVG = document.getElementById("logout-svg");
+logoutSVG.style.color = 'var(--primary)'
+logoutSVG.style.cursor = 'default'
+
+
 const allTabs = document.getElementsByClassName("tab");
 
 const errorAlert = document.getElementById("error-alert");
@@ -660,34 +665,34 @@ async function sendRequest() {
     user.lastName = user.lastName[0].toUpperCase() + user.lastName.slice(1);
     user.location.city = user.location.city[0].toUpperCase() + user.location.city.slice(1);
 
-    // const url = window.location.origin + "/auth/register";
+    const url = window.location.origin + "/auth/register";
 
-    // try {
-    //     const res = await fetch(url, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: "application/json",
-    //         },
-    //         body: JSON.stringify(user),
-    //     });
+    try {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(user),
+        });
 
-    //     const response = await res.json();
+        const response = await res.json();
 
-    //     // Redirect to account page if successful register
-    //     if (response.success && response.redirect) {
-    //         location.href = window.location.origin + response.url;
-    //     }
+        // Redirect to account page if successful register
+        if (response.success && response.redirect) {
+            location.href = window.location.origin + response.url;
+        }
 
-    //     // Display error if unsuccessful register
-    //     if (!response.success) {
-    //         errorAlert.style.display = "flex";
-    //         errorAlertMessage.textContent = response.message;
-    //     }
-    // } catch (err) {
-    //     errorAlert.style.display = "flex";
-    //     errorAlertMessage.textContent = err.message;
-    // }
+        // Display error if unsuccessful register
+        if (!response.success) {
+            errorAlert.style.display = "flex";
+            errorAlertMessage.textContent = response.message;
+        }
+    } catch (err) {
+        errorAlert.style.display = "flex";
+        errorAlertMessage.textContent = err.message;
+    }
 }
 
 // Show the correct register step one the screen

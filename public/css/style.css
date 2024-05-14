@@ -1,510 +1,615 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap");
 
 :root {
-  --background: #f1f1f1;
-  --primary: #e34e48;
-  --secondary: #383838;
-  --green: #9ac875;
-  --grey: #a6a6a6;
-  --yellow: #ffde58;
-  --orange: #ff904d;
-  --pink: #af356e;
-  --dark-orange: #d26236;
+    --background: #f1f1f1;
+    --primary: #e34e48;
+    --secondary: #383838;
+    --green: #9ac875;
+    --grey: #a6a6a6;
+    --yellow: #ffde58;
+    --orange: #ff904d;
+    --pink: #af356e;
+    --dark-orange: #d26236;
 }
 
 * {
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--background);
-  padding: 0;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    background-color: var(--background);
+    color: var(--background);
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .success-btn {
-  background-color: var(--green);
-  color: var(--secondary);
+    background-color: var(--green);
+    color: var(--secondary);
 }
 
 .danger-btn {
-  background-color: var(--secondary);
-  color: var(--primary);
+    background-color: var(--secondary);
+    color: var(--primary);
 }
 
 .info-btn {
-  background-color: var(--grey);
-  color: var(--secondary);
+    background-color: var(--grey);
+    color: var(--secondary);
 }
 
 .warning-btn {
-  background-color: var(--yellow);
-  color: var(--secondary);
+    background-color: var(--yellow);
+    color: var(--secondary);
 }
 
 .alt-warning-btn {
-  background-color: var(--orange);
-  color: var(--secondary);
+    background-color: var(--orange);
+    color: var(--secondary);
 }
 
 .back-btn {
-  background-color: var(--secondary);
-  color: var(--orange);
+    background-color: var(--secondary);
+    color: var(--orange);
 }
 
 .add-btn {
-  background-color: var(--secondary);
-  color: var(--background);
+    background-color: var(--secondary);
+    color: var(--background);
 }
 
 .supporter {
-  background-color: var(--pink);
+    background-color: var(--pink);
 }
 
 .general {
-  background-color: var(--secondary);
+    background-color: var(--secondary);
 }
 
 .organiser {
-  background-color: var(--dark-orange);
+    background-color: var(--dark-orange);
 }
 
 .ma-0 {
-  margin: 0;
+    margin: 0;
 }
 
 .fw-500 {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .fw-900 {
-  font-weight: 900;
+    font-weight: 900;
 }
 
 a {
-  color: var(--background);
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 500;
+    color: var(--background);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 svg {
-  cursor: pointer;
-  margin: 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem;
 }
 
 h1 {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 input,
 select {
-  background-color: var(--background);
-  border: none;
-  margin: 0.3rem 0;
-  font-weight: 400;
-  padding-left: 0.3rem;
-  height: 2rem;
-  font-size: 1rem;
-  color: var(--secondary);
+    background-color: var(--background);
+    border: none;
+    margin: 0.3rem 0;
+    font-weight: 400;
+    padding-left: 0.3rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: var(--secondary);
 }
 
 select {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 input:focus,
 select:focus {
-  outline: solid var(--secondary) 0.2rem;
+    outline: solid var(--secondary) 0.2rem;
 }
 
 button {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 900;
-  cursor: pointer;
-  min-width: 5rem;
-  min-height: 2.5rem;
-  padding: 0 1rem;
-  border: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    min-width: 5rem;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    border: none;
 }
 
 .checkbox {
-  background-color: var(--background);
-  height: 4rem;
-  width: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+    background-color: var(--background);
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .checked svg {
-  color: var(--green);
-  height: 3.5rem;
+    color: var(--green);
+    height: 3.5rem;
 }
 
 .error-alert {
-  border: 0.2rem solid var(--secondary);
-  margin: -1rem auto 1rem;
-  padding: 0.5rem 1rem;
-  color: var(--secondary);
-  display: none;
-  align-items: center;
-  max-width: 80rem;
+    border: 0.2rem solid var(--secondary);
+    margin: -1rem auto 1rem;
+    padding: 0.5rem 1rem;
+    color: var(--secondary);
+    display: none;
+    align-items: center;
+    max-width: 80rem;
 }
 
 .error-alert svg {
-  font-size: 3rem;
-  color: var(--primary);
-  margin: 0 1.2rem 0 0;
+    font-size: 3rem;
+    color: var(--primary);
+    margin: 0 1.2rem 0 0;
 }
 
 .progress-bar {
-  margin-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .progress-bar div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .progress-bar h1 {
-  color: var(--secondary);
-  text-align: center;
-  margin-bottom: 1.5rem;
-  margin-top: -2.5rem;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: -2.5rem;
 }
 
 .circle {
-  color: var(--secondary);
-  width: 4rem;
-  height: 4rem;
-  border-style: solid;
-  border-color: var(--secondary);
-  border-radius: 50%;
-  border-width: 0.1rem;
-  font-weight: 900;
+    color: var(--secondary);
+    width: 4rem;
+    height: 4rem;
+    border-style: solid;
+    border-color: var(--secondary);
+    border-radius: 50%;
+    border-width: 0.1rem;
+    font-weight: 900;
 }
 
 .rectangle {
-  width: 8rem;
-  height: 0.1rem;
-  background-color: var(--secondary);
+    width: 8rem;
+    height: 0.1rem;
+    background-color: var(--secondary);
 }
 
 .active {
-  background-color: var(--primary);
-  color: var(--background);
+    background-color: var(--primary);
+    color: var(--background);
 }
 
 .completed {
-  background-color: var(--green);
-  color: var(--background);
+    background-color: var(--green);
+    color: var(--background);
 }
 
 nav {
-  background-color: var(--primary);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem 1rem;
-  min-height: 5rem;
-  margin-bottom: 5rem;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 1rem;
+    min-height: 5rem;
+    margin-bottom: 5rem;
 }
 
 nav div {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 6rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 6rem;
 }
 
 nav h1 {
-  font-size: 3rem;
-  letter-spacing: 0.2rem;
-  cursor: pointer;
-  text-align: center;
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    text-align: center;
 }
 
 footer {
-  background-color: var(--secondary);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 12rem;
-  padding: 2rem 8rem;
-  margin-top: 5rem;
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 12rem;
+    padding: 2rem 8rem;
+    margin-top: 5rem;
 }
 
 footer div,
 footer img {
-  width: 15rem;
-  text-align: center;
+    width: 15rem;
+    text-align: center;
 }
 
 .footer-links {
-  display: flex;
-  flex-direction: column;
-  letter-spacing: 0.1rem;
-  gap: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.1rem;
+    gap: 0.3rem;
 }
 
 .container {
-  background-color: var(--primary);
-  text-align: center;
-  margin: auto;
-  padding: 1.5rem;
-  min-width: 25rem;
-  max-width: 75rem;
+    background-color: var(--primary);
+    text-align: center;
+    margin: auto;
+    padding: 1.5rem;
+    min-width: 25rem;
+    max-width: 75rem;
 }
 
 .container img {
-  width: 9rem;
+    width: 9rem;
 }
 
 .container h2 {
-  padding-bottom: 1rem;
-  text-transform: capitalize;
-  font-size: 2rem;
+    padding-bottom: 1rem;
+    text-transform: capitalize;
+    font-size: 2rem;
 }
 
 .login-form,
 form {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
 }
 
 .login-form label {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .login-form a {
-  margin-top: 0.3rem;
+    margin-top: 0.3rem;
 }
 
 .login-buttons {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
 }
 
 .login-buttons button {
-  width: 100%;
+    width: 100%;
 }
 
 .tab {
-  width: 70rem;
-  display: none;
+    width: 70rem;
+    display: none;
 }
 
 .tab p {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
 .register-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 1rem;
 }
 
 .register-buttons button {
-  width: 100%;
-  height: 4rem;
+    width: 100%;
+    height: 4rem;
 }
 
 .memberships {
-  background-color: var(--background);
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-  margin: 1rem 0;
-  min-height: 45rem;
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    margin: 1rem 0;
+    min-height: 45rem;
 }
 
 .option {
-  padding: 1rem;
-  width: 20rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3rem;
+    padding: 1rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
 }
 
 .option img {
-  margin: 1rem 0;
-  width: 10rem;
+    margin: 1rem 0;
+    width: 10rem;
 }
 
 .induction {
-  margin: 2rem 0;
-  text-align: start;
-  display: none;
+    margin: 2rem 0;
+    text-align: start;
+    display: none;
 }
 
 .induction-options {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 1rem;
-  margin-top: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 
 .induction-options h2 {
-  padding-bottom: 0.5rem;
-  text-transform: uppercase;
-  font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.8rem;
 }
 
 .induction-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
 }
 
 .user-container {
-  text-align: start;
-  margin-bottom: 2rem;
+    text-align: start;
+    margin-bottom: 2rem;
 }
 
 .user-container hr {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .user-container h2 {
-  padding: 0;
-  font-size: 1.5rem;
+    padding: 0;
+    font-size: 1.5rem;
 }
 
 .user-container h3 {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .user-info {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .user-info div {
-  width: 50%;
-  padding: 0.3rem 1rem;
+    width: 50%;
+    padding: 0.3rem 1rem;
 }
 
 .user-info input,
 .user-info select,
 .ext-memberships input {
-  width: 100%;
+    width: 100%;
 }
 
 .password-information {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .password-information li {
-  margin: 0.5rem 0 0.5rem 2.5rem;
+    margin: 0.5rem 0 0.5rem 2.5rem;
 }
 
 .user-optional {
-  display: flex;
-  justify-content: space-evenly;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .user-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 18rem;
-  gap: 0.5rem;
-  padding: 0.3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 18rem;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
 }
 
 .ext-memberships {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .ext-memberships div {
-  padding: 1rem 1rem 0;
-  display: none;
+    padding: 1rem 1rem 0;
+    display: none;
 }
 
 .skills,
 .interests {
-  background-color: var(--background);
-  color: var(--secondary);
-  padding: 1rem;
-  margin-top: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  width: 100%;
+    background-color: var(--background);
+    color: var(--secondary);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
 }
 
 .skill,
 .interest {
-  border: medium solid var(--secondary);
-  padding: 0.5rem;
-  cursor: pointer;
+    border: medium solid var(--secondary);
+    padding: 0.5rem;
+    cursor: pointer;
 }
 
 .selected {
-  background-color: var(--primary);
-  color: var(--background);
+    background-color: var(--primary);
+    color: var(--background);
 }
 
 .additional-skills {
-  display: flex;
-  align-items: center;
-  padding: 1rem 0 0;
-  gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0 0;
+    gap: 0.5rem;
 }
 
 .additional-skills input {
-  height: 2.5rem;
-  width: 20rem;
-  margin: 0;
+    height: 2.5rem;
+    width: 20rem;
+    margin: 0;
 }
 
 .agreement-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-  padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding: 0.5rem;
 }
 
 .agreement-container h2 {
-  text-transform: uppercase;
-  font-weight: 500;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .agreement-container a {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .agreement-section {
-  width: 69rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+    width: 69rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .agreement-check {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin-left: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-left: 5rem;
+}
+
+.banner {
+    background-color: var(--secondary);
+    min-height: 5rem;
+    margin-top: -5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    padding: 0.5rem;
+}
+
+.banner h2 {
+    text-transform: capitalize;
+    font-size: 2rem;
+}
+
+.banner div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.current {
+    color: var(--primary);
+}
+
+.account-container {
+    background-color: var(--primary);
+    margin: auto;
+    padding: 1.5rem;
+    width: 75%;
+}
+
+.account-container hr {
+    margin-bottom: 1rem;
+}
+
+.account-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.account-name h1 {
+    text-transform: capitalize;
+}
+
+.account-information-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.account-information-container section {
+    color: var(--secondary);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.account-information-container section h2 {
+    text-transform: uppercase;
+    color: var(--background);
+}
+
+.account-information-area {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.account-information-content {
+    background-color: var(--background);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.3rem;
+    height: 100%;
+}
+
+.account-information-content hr {
+    margin: 0;
+}
+
+.account-information-content div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-information-content p {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.member-skills-list hr:nth-last-child(-n+1){
+  display: none;
 }

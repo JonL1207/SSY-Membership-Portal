@@ -1,1 +1,245 @@
-<h1>member account page</h1>
+<%- include('../partials/header', {title: 'SSY Portal | Account', script: '/js/memberAccountScript.js'}) %> 
+
+<%- include('../partials/navbar') %> 
+
+<%- include('../partials/banner') %>
+
+<div class="account-container">
+    <div class="account-name">
+        <h1 class="ma-0 fw-500">
+            <%= user.firstName + ' ' + user.lastName %>
+        </h1>
+        <h3 class="ma-0 fw-500">
+            <%= user.pronouns %>
+        </h3>
+    </div>
+    <hr class="ma-0" />
+    <div class="account-information-container">
+        <section>
+            <div class="account-information-area">
+                <h2 class="ma-0 fw-500">identity</h2>
+                <div class="account-information-content">
+                    <div>
+                        <p>membership number</p>
+                        <p><%= user.membershipNumber %></p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>first name</p>
+                        <p>
+                            <% if(user.firstName){ %>
+                                <%= user.firstName %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>last name</p>
+                        <p>
+                            <% if(user.lastName){ %>
+                                <%= user.lastName %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>pronouns</p>
+                        <p>
+                            <% if(user.pronouns){ %>
+                                <%= user.pronouns %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>date of birth</p>
+                        <p>
+                            <% if(user.dateOfBirth){ %>
+                                <%= new Date(user.dateOfBirth).toLocaleDateString() %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="account-information-area">
+                <h2 class="ma-0 fw-500">contact details</h2>
+                <div class="account-information-content">
+                    <div>
+                        <p>email</p>
+                        <p>
+                            <% if(user.email){ %>
+                                <%= user.email %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>phone number</p>
+                        <p>
+                            <% if(user.phone){ %>
+                                <%= user.phone %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="account-information-area">
+                <h2 class="ma-0 fw-500">external memberships</h2>
+                <div class="account-information-content">
+                    <div>
+                        <p>trade union</p>
+                        <p>
+                            <% if(user.externalMemberships.tradeUnion){ %>
+                                <%= user.externalMemberships.tradeUnion %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>tenants union</p>
+                        <p>
+                            <% if(user.externalMemberships.tenantsUnion){ %>
+                                <%= user.externalMemberships.tenantsUnion %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>political party</p>
+                        <p>
+                            <% if(user.externalMemberships.politicalParty){ %>
+                                <%= user.externalMemberships.politicalParty %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>campaigning organisation</p>
+                        <p>
+                            <% if(user.externalMemberships.campaigningOrganisation){ %>
+                                <%= user.externalMemberships.campaigningOrganisation %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="account-information-area">
+                <h2 class="ma-0 fw-500">additional details</h2>
+                <div class="account-information-content">
+                    <div>
+                        <p>council area</p>
+                        <p>
+                            <% if(user.location.councilArea){ %>
+                                <%= user.location.councilArea %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>city/town/neighbourhood</p>
+                        <p>
+                            <% if(user.location.city){ %>
+                                <%= user.location.city %>
+                            <% } else { %>
+                                -
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>attending high school</p>
+                        <p>
+                            <% if(user.additionalDetails.isAttendingSecondary){ %>
+                                yes
+                            <% } else { %>
+                                no
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>attending college/university</p>
+                        <p>
+                            <% if(user.additionalDetails.isAttendingTernary){ %>
+                                yes
+                            <% } else { %>
+                                no
+                            <% } %>
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <p>based in scotland</p>
+                        <p>
+                            <% if(user.location.isBasedInScotland){ %>
+                                yes
+                            <% } else { %>
+                                no
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="account-information-area">
+                <h2 class="ma-0 fw-500">skills</h2>
+                <div class="account-information-content member-skills-list">
+                    <% if(user.additionalDetails.skills.length > 0){ %>
+                        <% for(let skill of user.additionalDetails.skills){ %>
+                            <p> <%= skill %> </p>
+                            <hr />
+                        <% } %>
+                    <% } else { %>
+                        <p>-</p>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="account-information-area">
+                <h2 class="ma-0 fw-500">interests</h2>
+                <div class="account-information-content member-skills-list">
+                    <% if(user.additionalDetails.interests.length > 0){ %>
+                        <% for(let interest of user.additionalDetails.interests){ %>
+                            <p> <%= interest %> </p>
+                            <hr />
+                        <% } %>
+                    <% } else { %>
+                        <p>-</p>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

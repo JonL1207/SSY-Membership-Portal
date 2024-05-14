@@ -14,8 +14,8 @@ const memberRoutes = require("./routes/memberRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const store = new MongoDBStore({
-  uri: process.env.MONGO_URI,
-  collection: "sessions",
+    uri: process.env.MONGO_URI,
+    collection: "sessions",
 });
 
 // Database Connection
@@ -29,17 +29,17 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: false, //set to true in production
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, //cookie expires after 24 hours
-    },
-    store: store,
-  })
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: false, //set to true in production
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24, //cookie expires after 24 hours
+        },
+        store: store,
+    })
 );
 
 // View Engine
@@ -47,17 +47,18 @@ app.set("view engine", "ejs");
 
 // Routes
 app.get("/", (req, res) => {
-  if (req.session.user) {
-    res.redirect("/member/account");
-  }
-  res.redirect("/auth/login");
+    if (req.session.isAuthenticated) {
+        res.redirect("/member/account");
+    } else {
+        res.redirect("/auth/login");
+    }
 });
 app.use("/auth", authRoutes);
 app.use("/member", memberRoutes);
 // app.use("/admin", adminRoutes);
 // app.use("/payment", paymentRoutes);
 app.get("*", (req, res) => {
-  res.redirect('/auth/login')
+    res.redirect("/auth/login");
 });
 
 // Start Server

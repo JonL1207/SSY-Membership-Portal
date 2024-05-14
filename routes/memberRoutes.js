@@ -1,7 +1,11 @@
 const { Router } = require("express");
 const memberController = require("../controllers/memberController");
+const { isAuthenticated } = require("../middleware/authentication");
 
 const router = Router();
+
+// Use middleware to chek for logged in user before every request to a member resourse
+router.use(isAuthenticated);
 
 //---------- ROUTES THAT RENDER PAGES ----------
 
