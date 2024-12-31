@@ -1,0 +1,37 @@
+{
+    "name": "ssy-membership-portal",
+    "version": "1.0.0",
+    "description": "Membership infrastructure for the Scottish Socialist Youth (SSY) to allow it's members to register, log in, control their data and alter their membership subscription and donation details.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JonL1207/SSY-Membership-Portal.git"
+    },
+    "author": "Jon Law",
+    "license": "",
+    "bugs": {
+        "url": "https://github.com/JonL1207/SSY-Membership-Portal/issues"
+    },
+    "homepage": "https://github.com/JonL1207/SSY-Membership-Portal#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "ejs": "^3.1.10",
+        "express": "^4.21.1",
+        "express-mysql-session": "^3.0.3",
+        "express-session": "^1.18.1",
+        "express-validator": "^7.2.0",
+        "helmet": "^8.0.0",
+        "mysql2": "^3.11.3",
+        "nodemailer": "^6.9.16",
+        "stripe": "^17.3.1"
+    },
+    "devDependencies": {
+        "dotenv": "^16.4.5",
+        "nodemon": "^3.1.7"
+    }
+}
